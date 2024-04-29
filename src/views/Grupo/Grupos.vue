@@ -109,8 +109,8 @@ export default {
       }
     },
     DialogUpdate(item) {
-      this.grupoGuardar = { ...item.raw };
-      this.idGrado = item.raw.idGrado;
+      this.grupoGuardar = { ...item };
+      this.idGrado = item.idGrado;
 
       this.dialog = true;
     },
@@ -201,7 +201,7 @@ export default {
                   class="ms-2"
                   icon="mdi-trash-can"
                   text="trash"
-                  @click="AbrirModalEliminar(item.raw.id)"
+                  @click="AbrirModalEliminar(item.id)"
                 />
               </template>
             </v-data-table>
