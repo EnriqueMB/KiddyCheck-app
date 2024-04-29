@@ -52,7 +52,7 @@
                 class="mb-1"
                 icon="mdi-qrcode"
                 text="QR"
-                @click="generateQrCode(item.raw)"
+                @click="generateQrCode(item)"
               />
 
               <v-btn
@@ -63,7 +63,7 @@
                 text="Calificación"
                 @click="
                   () => {
-                    dataAlumno = item.raw;
+                    dataAlumno = item;
                     modalCalificacion = true;
                   }
                 "
@@ -206,8 +206,8 @@ export default {
     "download-excel": VueJsonExcel,
   },
   computed: {
-    baseUrl() {
-      return import.meta.VITE_API_URL;
+    API_URL() {
+      return import.meta.env.VITE_API_URL;
     },
     imageUrl() {
       // Crear una URL Blob a partir de la cadena Base64
@@ -275,16 +275,15 @@ export default {
   },
   methods: {
     cargarDatosEnFormulario(item) {
-      this.dataAlumno = item.raw;
+      console.log(item);
+      this.dataAlumno = item;
       this.modalFormAlumno = true;
     },
     async guardarAlumno() {
       const edit = this.dataAlumno?.id > 0 ? true : false;
       // Define the URL of the server endpoint you want to send the POST request to
-      let url = `https://kiddycheck-api.azurewebsites.net/api/v1/Personas/AgregarPersona`;
-      if (edit)
-        url =
-          "https://kiddycheck-api.azurewebsites.net/api/v1/Personas/ActualizarPersona";
+      let url = `${this.API_URL}/api/v1/Personas/AgregarPersona`;
+      if (edit) url = `${this.API_URL}/api/v1/Personas/ActualizarPersona`;
 
       let response = await axios.post(url, this.dataAlumno, {
         headers: {
@@ -308,7 +307,7 @@ export default {
     },
 
     async getListaAlumno() {
-      const url = `https://kiddycheck-api.azurewebsites.net/api/v1/Personas/ObtenerPersonaPorTipo?id=4`;
+      const url = `${this.API_URL}/api/v1/Personas/ObtenerPersonaPorTipo?id=4`;
       let response = await axios.get(url, {
         headers: {
           "Content-Type": "application/json",
@@ -325,7 +324,7 @@ export default {
       this.qrCodeData = decodedData;
     },
     generateQrCode(alumno) {
-      const url = `https://kiddycheck-api.azurewebsites.net/api/v1/Alumno/generateqr?id=${alumno.id}&nombre=${alumno.nombreCompleto}`;
+      const url = `${this.API_URL}/api/v1/Alumno/generateqr?id=${alumno.id}&nombre=${alumno.nombreCompleto}`;
 
       // Options for the fetch request
       const options = {
@@ -378,7 +377,7 @@ export default {
       printWindow.document.write(htmlContent);
     },
     async obtenerGrado() {
-      const url = `https://kiddycheck-api.azurewebsites.net/api/Grado/ObtenerGrados`;
+      const url = `${this.API_URL}/api/Grado/ObtenerGrados`;
       let response = await axios.get(url, {
         headers: {
           "Content-Type": "application/json",
@@ -393,7 +392,7 @@ export default {
     },
 
     async obtenerGrupo() {
-      const url = `https://kiddycheck-api.azurewebsites.net/api/Grupo/ObtenerGrupos`;
+      const url = `${this.API_URL}/api/Grupo/ObtenerGrupos`;
       let response = await axios.get(url, {
         headers: {
           "Content-Type": "application/json",
@@ -409,7 +408,7 @@ export default {
 
     async exportarAsistencia() {
       console.log(this.formExportar);
-      const url = `https://kiddycheck-api.azurewebsites.net/api/v1/Alumno/Exportar?idGrupo=${this.formExportar.grupo}&IdGrado=${this.formExportar.grado}`;
+      const url = `${this.API_URL}/api/v1/Alumno/Exportar?idGrupo=${this.formExportar.grupo}&IdGrado=${this.formExportar.grado}`;
       let response = await axios.post(
         url,
         {},
