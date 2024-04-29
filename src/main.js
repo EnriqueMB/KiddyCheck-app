@@ -14,8 +14,6 @@ import router from './routes'
 import  VueCookies  from 'vue-cookies';
 
 
-
-
 const vuetify = createVuetify({
   components,
   directives
