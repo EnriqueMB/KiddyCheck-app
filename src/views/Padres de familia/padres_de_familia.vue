@@ -119,7 +119,7 @@ export default {
     },
 
     async _abrirEditar(item) {
-      this.tutorDatos = { ...item.raw };
+      this.tutorDatos = { ...item };
       this.OpenAgregar = true;
     },
     async _cerrarEditar() {
@@ -249,7 +249,7 @@ export default {
                     title="Eliminar"
                     icon="mdi-delete"
                     color="error"
-                    @click="_abrirEliminar(item.raw.id)"
+                    @click="_abrirEliminar(item.id)"
                   >
                   </VBtn>
                 </div>
