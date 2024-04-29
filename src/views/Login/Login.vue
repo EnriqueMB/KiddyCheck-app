@@ -50,6 +50,9 @@ export default {
     async validarLogin(){
       
       if(this.datosUsuario.userName !=null && this.datosUsuario.password){
+          
+        this.datosUsuario.userName = this.datosUsuario.userName.trim();
+        this.datosUsuario.password = this.datosUsuario.password.trim();
         this.login();
       }else{
         this.toast.warning("Ingresa tus credenciales")
