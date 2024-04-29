@@ -5,7 +5,7 @@ import grupoService from "../../services/grupo/grupo-service";
 import maestroService from "../../services/maestros/maestro-service";
 import axios from "axios";
 //import maestroService from '../../services/maestros/maestro-service'
-import { VBtn } from "vuetify/components";
+import { VBtn, VDataTable } from "vuetify/components";
 
 export default {
   components: {},
@@ -131,7 +131,7 @@ export default {
 
     eliminar(item) {
       this.openEliminar = true;
-      this.idMaestro = item.raw.id;
+      this.idMaestro = item.id;
     },
     cerrarEliminar() {
       this.openEliminar = false;
@@ -147,7 +147,7 @@ export default {
     },
 
     editar(item) {
-      this.requestMaestros = { ...item.raw };
+      this.requestMaestros = { ...item };
       this.dialog = true;
     },
 
