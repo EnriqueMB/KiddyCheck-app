@@ -87,6 +87,7 @@ export default {
       }
     },
     DialogUpdate(item) {
+      console.log(item);
       this.gradoAdd = { ...item };
       this.dialog = true;
     },
@@ -165,13 +166,13 @@ export default {
                 <v-btn
                   size="small"
                   class="ms-2"
-                  @click="DialogUpdate(item.raw)"
+                  @click="DialogUpdate(item)"
                   icon="mdi-pencil-box-multiple-outline"
                   color="success"
                   text="Calificación"
                 />
                 <v-btn
-                  @click="AbrirModalEliminar(item.raw.id)"
+                  @click="AbrirModalEliminar(item.id)"
                   size="small"
                   class="ms-2"
                   icon="mdi-trash-can"
