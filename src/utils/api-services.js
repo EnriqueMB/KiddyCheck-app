@@ -2,7 +2,7 @@ import { useCookie } from '../@core/composable/useCookie'
 import axios from 'axios'
 
 export const $apiService = {
-    urlApi: import.meta.env.VITE_API_URL,
+    urlApi: `${import.meta.env.VITE_API_URL}/`,
     //urlApi: "https://apiedomex.azurewebsites.net/",
 
 
