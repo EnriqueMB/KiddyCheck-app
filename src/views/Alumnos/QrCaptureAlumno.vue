@@ -52,6 +52,7 @@ export default defineComponent({
       );
 
       if (response.status == 200) {
+        this.toast.success("Se capturo asistencia");
       } else {
         this.toast.success("Ocurrio un error al enviar correo");
       }
