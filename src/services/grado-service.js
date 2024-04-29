@@ -3,11 +3,11 @@
 import axios from "axios";
 
 const controller = 'api/Grado/'
-
+const APIURL = import.meta.env.VITE_API_URL;
 export default {
     ObtenerGrados: async () => {
         try {
-            let res = await axios.get(`https://kiddycheck-api.azurewebsites.net/${controller}ObtenerGrados`);
+            let res = await axios.get(`${APIURL}/${controller}ObtenerGrados`);
             return res.data;
         } catch (error) {
             console.error('Error al agregar grado' + error);
@@ -16,7 +16,7 @@ export default {
     },
     ObtenerGradoId: async (id) => {
         try {
-            let res = await axios.get(`https://kiddycheck-api.azurewebsites.net/${controller}ObtenerGradoId?Id=${id}`);
+            let res = await axios.get(`${APIURL}/${controller}ObtenerGradoId?Id=${id}`);
             return res.data;
         } catch (error) {
             console.error('Error al agregar grado' + error);
@@ -25,7 +25,7 @@ export default {
     },
     AgregarGrados: async (persona) => {
         try {
-            let res = await axios.post(`https://kiddycheck-api.azurewebsites.net/${controller}AgregarGrado`, persona)
+            let res = await axios.post(`${APIURL}/${controller}AgregarGrado`, persona)
             return res
         } catch (error) {
             console.log(error);
@@ -35,7 +35,7 @@ export default {
 
     EditarGrados: async (persona) => {
         try {
-            let res = await axios.put(`https://kiddycheck-api.azurewebsites.net/${controller}ModificarGrado`, persona)
+            let res = await axios.put(`${APIURL}/${controller}ModificarGrado`, persona)
             return res
         } catch (error) {
             console.log(error);
@@ -44,7 +44,7 @@ export default {
     },
     EliminarGrados: async (id) => {
         try {
-            let res = await axios.delete(`https://kiddycheck-api.azurewebsites.net/${controller}EliminarGrado?id=${id}`)
+            let res = await axios.delete(`${APIURL}/${controller}EliminarGrado?id=${id}`)
             return res
         } catch (error) {
             console.log(error);

@@ -18,7 +18,7 @@ import { QrcodeStream, QrcodeCapture } from "vue-qrcode-reader";
 import axios from "axios";
 import { useToast } from "vue-toastification";
 import { useCookie } from "../../@core/composable/useCookie";
-
+const API = import.meta.env.VITE_API_URL;
 export default defineComponent({
   name: "QrCaptureExample",
   components: {
@@ -34,9 +34,12 @@ export default defineComponent({
   },
 
   methods: {
+    API_URL() {
+      return import.meta.env.VITE_API_URL;
+    },
     //
-    async obtenerMateria(id) {
-      const url = `https://kiddycheck-api.azurewebsites.net/api/v1/Alumno/EnviarCorreo?id=${id}`;
+    async enviarNotificacion(id) {
+      const url = `${API}/api/v1/Alumno/EnviarCorreo?id=${id}`;
       let response = await axios.post(
         url,
         {},
@@ -84,7 +87,7 @@ export default defineComponent({
         const item = JSON.parse(items[0].rawValue); // Decodificar el contenido del código QR
         this.lista.push(item); // Agregar a la lista
         if (item?.Id > 0) {
-          this.obtenerMateria(item?.Id);
+          this.enviarNotificacion(item?.Id);
         }
       } catch (error) {
         // Manejar errores
