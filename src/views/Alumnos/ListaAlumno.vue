@@ -95,7 +95,9 @@
           />
         </v-card-text>
         <v-card-actions class="justify-end">
-          <v-btn text="Cancelar" @click="modalFormAlumno = false"></v-btn>
+          <v-btn text="Cancelar" @click="() => {
+            (modalFormAlumno = false), (dataAlumno = {})
+          }"></v-btn>
           <v-btn
             color="surface-variant"
             text="Guardar"
