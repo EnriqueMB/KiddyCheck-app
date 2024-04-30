@@ -10,7 +10,7 @@ import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
-import router from './routes' 
+import {router} from './routes/index.js' 
 import  VueCookies  from 'vue-cookies';
 
 
