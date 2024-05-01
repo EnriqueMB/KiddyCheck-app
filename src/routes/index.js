@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 //import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory("https://lively-forest-0234a550f.5.azurestaticapps.net/"),
   routes: [
     {
       path: '/',
