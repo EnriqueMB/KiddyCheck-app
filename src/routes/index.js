@@ -66,6 +66,7 @@ const router = createRouter({
 
 // router.beforeEach((to, from, next) => {
 
+
 //   const accessToken = sessionStorage.getItem('accessToken');
 //   // Verificar si el usuario tiene un token 
 //   if (to.name !== 'Login' && !accessToken) {
