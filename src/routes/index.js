@@ -64,18 +64,18 @@ const router = createRouter({
   ]
 })
 
-// router.beforeEach((to, from, next) => {
+ router.beforeEach((to, from, next) => {
 
 
-//   const accessToken = sessionStorage.getItem('accessToken');
-//   // Verificar si el usuario tiene un token 
-//   if (to.name !== 'Login' && !accessToken) {
-//     // Si el usuario intenta acceder a una ruta que no sea la de inicio de sesión y no tiene un token en las cookies,
-//     next({ name: 'Login' });
-//   } else {
-//     // permitir el acceso a la ruta solicitada si tiene token 
-//     next();
-//   }
-// });
+   const accessToken = sessionStorage.getItem('accessToken');
+   // Verificar si el usuario tiene un token 
+   if (to.name !== 'Login' && !accessToken) {
+     // Si el usuario intenta acceder a una ruta que no sea la de inicio de sesión y no tiene un token en las cookies,
+     next({ name: 'Login' });
+   } else {
+     // permitir el acceso a la ruta solicitada si tiene token 
+     next();
+   }
+});
 
 export default router
